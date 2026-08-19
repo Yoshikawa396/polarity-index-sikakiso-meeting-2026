@@ -1,3 +1,8 @@
+"""
+Granule Polarity Analysis Script
+Analyzes the polarity of secretory granules in tissue images.
+"""
+
 import cv2
 import numpy as np
 import pandas as pd
@@ -9,7 +14,7 @@ def analyze_granule_polarity(image_path: str, label: str):
     Calculates the Polarity Index based on the distance between 
     the Intensity Weighted Centroid (Eosinophilic Granules) and the Geometric Centroid (Cell/Region).
     """
-    # 1. Load Image in BGR Color Space
+    # 1. Load Image in BGR Color Space (修正: グレースケールではなくカラーで読み込み)
     img_bgr = cv2.imread(image_path)
     if img_bgr is None:
         raise FileNotFoundError(f"Image not found at path: {image_path}")
